@@ -1,72 +1,21 @@
-# My Web Development Journey
+# Web Fundamentals Archive
 
-Welcome to my personal learning journey through web development!  
-This repository contains all the exercises, projects, and notes I'm building while studying **The Complete Web Development Bootcamp** by Angela Yu (Udemy).
+This repository serves as a documented archive of my foundational studies in web development. It contains core exercises and structural projects developed during my initial deep dive into frontend technologies.
+
+## Core Competencies
+The modules preserved here represent a solid understanding of the structural and stylistic pillars of the web:
+
+- **HTML5:** Semantic architecture, document structure, and multi-page navigation strategies.
+- **CSS3:** Advanced selectors, box modeling, typography, and responsive layouts.
+- **Project Workflow:** Basic version control practices and component-based design logic.
+
+## Transition to Production
+After solidifying these fundamentals, I transitioned from structured learning environments to building professional-grade solutions. My current focus is on marketing-driven web development and high-performance staging environments.
+
+## Professional Portals
+For examples of my current projects, professional UI/UX, and active client work, please refer to:
+- **[Portfolio](https://lspradoo.github.io/)** - Main brand and full project showcase.
+- **[Project Previews](https://lspradoo.github.io/ls-project-previews/)** - Exclusive staging area for active client deployments and progress tracking.
 
 ---
-
-## 🚀 What's in here?
-
-This repo is structured to show my step-by-step growth as I learn **full-stack web development**, from basics to advanced tools.
-
-
-## ⚠️ Disclaimer
-
-This repository is for educational purposes only.  
-Exercises are based on the content from [Angela Yu's course](https://www.udemy.com/course/the-complete-web-development-bootcamp/)  
-
-## 📌 Next steps
-
-### HTML & CSS
-- [x] Section 1: Introduction & Setup
-- [x] Section 2: HTML Basics
-- [x] Section 3: Intermediate HTML
-- [x] Section 4: Introduction to CSS
-- [x] Section 5: Intermediate CSS
-- [x] Section 6: Personal Portfolio Website
-
-### Layout & Frameworks
-- [ ] Section 7: Flexbox
-- [ ] Section 8: CSS Grid
-- [ ] Section 9: Bootstrap 5
-- [ ] Section 10: TinDog Project
-
-### JavaScript & DOM
-- [ ] Section 11: JavaScript Basics
-- [ ] Section 12: JavaScript Intermediate
-- [ ] Section 13: Document Object Model (DOM)
-- [ ] Section 14: Drum Kit Project
-- [ ] Section 15: Dice Game Project
-- [ ] Section 16: jQuery
-
-### Backend (Node.js & Express)
-- [ ] Section 17: Node.js
-- [ ] Section 18: Express.js
-- [ ] Section 19: APIs & JSON
-- [ ] Section 20: Newsletter Signup Project
-- [ ] Section 21: Weather Project
-
-### Databases & Authentication
-- [ ] Section 22: PostgreSQL & SQL
-- [ ] Section 23: MongoDB
-- [ ] Section 24: Mongoose
-- [ ] Section 25: Authentication & Security
-- [ ] Section 26: Secrets Project
-
-### React
-- [ ] Section 27: React Basics
-- [ ] Section 28: Components & Props
-- [ ] Section 29: State & Hooks
-- [ ] Section 30: Keeper App Project
-
-### Tools & Deployment
-- [ ] Section 31: Git, GitHub & Version Control
-- [ ] Section 32: EJS Templating
-- [ ] Section 33: Environments & Deployment (Render, GitHub Pages, etc.)
-
-### Bonus & Web3
-- [ ] Section 34: Web3 & Blockchain Intro
-- [ ] Section 35: Internet Computer & Canisters
-- [ ] Section 36: NFT Marketplace Project
-- [ ] Section 37+: Final Tips, Interview Prep & Extras
-      
+Maintained by Lucas Prado.
