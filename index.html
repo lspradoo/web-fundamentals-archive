@@ -8,10 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ================= RESET DE CAIXA (A CORREÇÃO DO BUG) ================= */
         * { box-sizing: border-box; }
 
-        /* ================= VARIÁVEIS (Cyberpunk Purple) ================= */
         :root {
             --bg-main: #0f0e17;       
             --bg-secondary: #1a1a2e;  
@@ -31,18 +29,16 @@
         a { text-decoration: none; transition: var(--transition); }
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
 
-        /* ================= HEADER & IDIOMAS ================= */
         header.dashboard-header {
             padding: 1.5rem 0; border-bottom: 1px solid rgba(127, 90, 240, 0.1); background-color: var(--bg-secondary);
         }
 
         .header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
         .back-to-portfolio { color: var(--purple-primary); font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; }
-        .back-to-portfolio:hover { color: var(--text-light); text-shadow: 0 0 10px var(--purple-primary); }
+        .back-to-portfolio:hover { color: var(--text-light); }
 
         .lang-switcher { display: flex; align-items: center; gap: 10px; }
-        .lang-switcher label { color: var(--text-gray); font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 5px; }
-        .lang-switcher label i { color: var(--purple-primary); }
+        .lang-switcher label { color: var(--text-gray); font-size: 0.9rem; font-weight: 600; }
         
         .custom-select-wrapper select {
             background-color: var(--bg-main); color: var(--text-light); border: 1px solid var(--purple-primary);
@@ -52,7 +48,6 @@
             background-repeat: no-repeat; background-position: right 10px top 50%; background-size: 10px auto;
         }
 
-        /* ================= HERO ================= */
         main.dashboard-main { flex-grow: 1; padding: 4rem 0; display: flex; flex-direction: column; align-items: center; }
         .hero-section { text-align: center; margin-bottom: 4rem; opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s ease-out forwards; }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
@@ -61,7 +56,6 @@
         .purple-text { color: var(--purple-primary); }
         p.dashboard-subtitle { color: var(--text-gray); font-size: 1.1rem; max-width: 650px; margin: 0 auto; line-height: 1.6; }
 
-        /* ================= TIMELINE / MODULES GRID ================= */
         .modules-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; width: 100%; max-width: 1000px;
             opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s ease-out 0.2s forwards;
@@ -69,22 +63,22 @@
 
         .module-card {
             background-color: var(--bg-secondary); padding: 2.5rem; border-radius: 16px; border: 1px solid rgba(127, 90, 240, 0.1);
-            position: relative; overflow: hidden; transition: var(--transition); min-height: 380px; display: flex; flex-direction: column; justify-content: space-between;
+            position: relative; overflow: hidden; transition: var(--transition); min-height: 360px; display: flex; flex-direction: column; justify-content: space-between;
         }
 
-        .module-card:hover { transform: translateY(-10px); border-color: var(--purple-primary); box-shadow: 0 10px 30px -10px var(--purple-glow); }
+        .module-card:hover { transform: translateY(-5px); border-color: var(--purple-primary); box-shadow: 0 10px 30px -10px var(--purple-glow); }
         
-        .module-icon { font-size: 2.5rem; color: var(--purple-primary); margin-bottom: 1.5rem; }
+        .module-icon { font-size: 2rem; color: var(--purple-primary); margin-bottom: 1.5rem; opacity: 0.8; }
         .module-title { font-size: 1.4rem; color: var(--text-light); margin-bottom: 1rem; margin-top: 0; }
         .module-desc { color: var(--text-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1; }
         
-        .tech-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 1.5rem; }
-        .tag { background-color: rgba(127, 90, 240, 0.1); color: var(--purple-primary); padding: 4px 12px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(127, 90, 240, 0.3); }
+        .tech-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 2rem; }
+        .tag { background-color: rgba(127, 90, 240, 0.05); color: var(--text-gray); padding: 4px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(127, 90, 240, 0.2); transition: var(--transition); }
+        .module-card:hover .tag { border-color: var(--purple-primary); color: var(--purple-primary); }
 
-        .btn-repo { color: var(--purple-primary); font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; margin-top: auto; }
-        .module-card:hover .btn-repo { color: var(--text-light); text-shadow: 0 0 10px var(--purple-primary); }
+        .btn-repo { color: var(--purple-primary); font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; margin-top: auto; }
+        .module-card:hover .btn-repo { color: var(--text-light); }
 
-        /* Estilo para o Cartão Especial do Portfólio */
         .portfolio-banner {
             border: 2px solid var(--purple-primary); 
             background: linear-gradient(145deg, var(--bg-secondary) 0%, #110f18 100%);
@@ -92,10 +86,10 @@
         
         .btn-portfolio {
             background-color: var(--purple-primary); color: var(--text-light); padding: 1rem; border-radius: 8px;
-            font-weight: 600; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px var(--purple-glow); width: 100%; justify-content: center; margin-top: auto;
+            font-weight: 600; display: flex; align-items: center; justify-content: center; width: 100%; margin-top: auto; transition: var(--transition);
         }
 
-        .module-card:hover .btn-portfolio { text-shadow: none !important; background-color: #6b44d6; }
+        .module-card:hover .btn-portfolio { background-color: #6b44d6; }
 
         footer { padding: 2rem 0; text-align: center; border-top: 1px solid rgba(127, 90, 240, 0.1); color: var(--text-gray); font-size: 0.9rem; background-color: var(--bg-main); }
 
@@ -111,11 +105,11 @@
     <header class="dashboard-header">
         <div class="container header-content">
             <a href="https://lspradoo.github.io/" class="back-to-portfolio" data-i18n="back_portfolio">
-                <i class="fas fa-arrow-left"></i> Lucas Prado | Portfolio
+                ← Lucas Prado | Portfolio
             </a>
             
             <div class="lang-switcher">
-                <label for="lang-select" data-i18n="lang_label"><i class="fas fa-globe"></i> Idioma:</label>
+                <label for="lang-select" data-i18n="lang_label">Idioma:</label>
                 <div class="custom-select-wrapper">
                     <select id="lang-select" onchange="changeLanguage(this.value)">
                         <option value="pt">Português (PT)</option>
@@ -132,53 +126,52 @@
         
         <div class="hero-section">
             <h1 class="dashboard-title" data-i18n="hero_title">Fundamentos da <span class="purple-text">Web</span></h1>
-            <p class="dashboard-subtitle" data-i18n="hero_subtitle">Um arquivo interativo dos meus estudos fundamentais em arquitetura web, semântica e design estilizado.</p>
+            <p class="dashboard-subtitle" data-i18n="hero_subtitle">Arquivo interativo de estudos estruturais, semântica e design.</p>
         </div>
 
         <div class="modules-grid">
             <article class="module-card">
                 <i class="fab fa-html5 module-icon"></i>
                 <h3 class="module-title" data-i18n="mod1_title">HTML5 Semântico</h3>
-                <p class="module-desc" data-i18n="mod1_desc">Aplicações práticas de estrutura web, incluindo projetos de Ranking de Filmes, Convites de Aniversário e arquitetura multi-páginas.</p>
+                <p class="module-desc" data-i18n="mod1_desc">Aplicações práticas de estrutura web, incluindo Ranking de Filmes, Convites de Aniversário e arquitetura multi-páginas.</p>
                 <div class="tech-tags">
                     <span class="tag">HTML5</span>
                     <span class="tag">Hierarquia</span>
                     <span class="tag">Multi-Page</span>
                 </div>
-                <a href="https://github.com/lspradoo/web-fundamentals-archive/tree/main/04%20Multi-Page%20Websites" target="_blank" class="btn-repo" data-i18n="btn_code">Ver Código Fonte <i class="fab fa-github"></i></a>
+                <a href="https://github.com/lspradoo/web-fundamentals-archive/tree/main/04%20Multi-Page%20Websites" target="_blank" class="btn-repo" data-i18n="btn_code">Ver Código Fonte</a>
             </article>
 
             <article class="module-card">
                 <i class="fab fa-css3-alt module-icon"></i>
                 <h3 class="module-title" data-i18n="mod2_title">CSS & Design Base</h3>
-                <p class="module-desc" data-i18n="mod2_desc">Domínio avançado sobre o Box Model e estilização visual. Projetos práticos destacam Memes Motivacionais e Bandeiras em puro CSS.</p>
+                <p class="module-desc" data-i18n="mod2_desc">Domínio sobre o Box Model e estilização visual. Projetos destacam Memes Motivacionais e Bandeiras em puro CSS.</p>
                 <div class="tech-tags">
                     <span class="tag">CSS3</span>
                     <span class="tag">Box Model</span>
                     <span class="tag">Design Visual</span>
                 </div>
-                <a href="https://github.com/lspradoo/web-fundamentals-archive/tree/main/06%20CSS%20Properties" target="_blank" class="btn-repo" data-i18n="btn_code">Ver Código Fonte <i class="fab fa-github"></i></a>
+                <a href="https://github.com/lspradoo/web-fundamentals-archive/tree/main/06%20CSS%20Properties" target="_blank" class="btn-repo" data-i18n="btn_code">Ver Código Fonte</a>
             </article>
 
             <article class="module-card">
                 <i class="fas fa-layer-group module-icon"></i>
                 <h3 class="module-title" data-i18n="mod3_title">Layouts Modernos</h3>
-                <p class="module-desc" data-i18n="mod3_desc">Técnicas sênior de posicionamento e design responsivo com Flexbox e Grid para criar interfaces visuais complexas.</p>
+                <p class="module-desc" data-i18n="mod3_desc">Técnicas sênior de posicionamento e design responsivo com Flexbox e Grid para criar interfaces complexas.</p>
                 <div class="tech-tags">
                     <span class="tag">Flexbox</span>
                     <span class="tag">CSS Grid</span>
                     <span class="tag">Responsivo</span>
                 </div>
-                <a href="https://github.com/lspradoo/web-fundamentals-archive/tree/main/08%20Advanced%20CSS" target="_blank" class="btn-repo" data-i18n="btn_code">Ver Código Fonte <i class="fab fa-github"></i></a>
+                <a href="https://github.com/lspradoo/web-fundamentals-archive/tree/main/08%20Advanced%20CSS" target="_blank" class="btn-repo" data-i18n="btn_code">Ver Código Fonte</a>
             </article>
 
             <article class="module-card portfolio-banner">
                 <i class="fas fa-briefcase module-icon"></i>
                 <h3 class="module-title" data-i18n="mod4_title">Meu Portfólio Hub</h3>
-                <p class="module-desc" data-i18n="mod4_desc">Clique aqui para acessar o hub principal com meus projetos de elite, extensões para Chrome e DNA de Marketing.</p>
-                
+                <p class="module-desc" data-i18n="mod4_desc">Acesse o hub principal com meus projetos de elite, extensões para Chrome e DNA de Marketing.</p>
                 <a href="https://lspradoo.github.io/" class="btn-portfolio" data-i18n="btn_portfolio">
-                    Acessar Portfólio Completo <i class="fas fa-user-tie"></i>
+                    Acessar Portfólio
                 </a>
             </article>
         </div>
@@ -187,79 +180,79 @@
 
     <footer>
         <div class="container">
-            <p data-i18n="footer">Documentado por Lucas Prado © 2026</p>
+            <p data-i18n="footer">Lucas Prado © 2026</p>
         </div>
     </footer>
 
     <script>
         const translations = {
             pt: {
-                lang_label: "<i class='fas fa-globe'></i> Idioma:",
-                back_portfolio: "<i class='fas fa-arrow-left'></i> Lucas Prado | Portfolio",
+                lang_label: "Idioma:",
+                back_portfolio: "← Lucas Prado | Portfolio",
                 hero_title: "Fundamentos da <span class='purple-text'>Web</span>",
-                hero_subtitle: "Um arquivo interativo dos meus estudos fundamentais em arquitetura web, semântica e design estilizado.",
+                hero_subtitle: "Arquivo interativo de estudos estruturais, semântica e design.",
                 mod1_title: "HTML5 Semântico",
-                mod1_desc: "Aplicações práticas de estrutura web, incluindo projetos de Ranking de Filmes, Convites de Aniversário e arquitetura multi-páginas.",
+                mod1_desc: "Aplicações práticas de estrutura web, incluindo Ranking de Filmes, Convites de Aniversário e arquitetura multi-páginas.",
                 mod2_title: "CSS & Design Base",
-                mod2_desc: "Domínio avançado sobre o Box Model e estilização visual. Projetos práticos destacam Memes Motivacionais e Bandeiras em puro CSS.",
+                mod2_desc: "Domínio sobre o Box Model e estilização visual. Projetos destacam Memes Motivacionais e Bandeiras em puro CSS.",
                 mod3_title: "Layouts Modernos",
-                mod3_desc: "Técnicas sênior de posicionamento e design responsivo com Flexbox e Grid para criar interfaces visuais complexas.",
+                mod3_desc: "Técnicas sênior de posicionamento e design responsivo com Flexbox e Grid para criar interfaces complexas.",
                 mod4_title: "Meu Portfólio Hub",
-                mod4_desc: "Clique aqui para acessar o hub principal com meus projetos de elite, extensões para Chrome e DNA de Marketing.",
-                btn_code: "Ver Código Fonte <i class='fab fa-github'></i>",
-                btn_portfolio: "Acessar Portfólio Completo <i class='fas fa-user-tie'></i>",
-                footer: "Documentado por Lucas Prado © 2026"
+                mod4_desc: "Acesse o hub principal com meus projetos de elite, extensões para Chrome e DNA de Marketing.",
+                btn_code: "Ver Código Fonte <i class='fab fa-github' style='margin-left: 8px; font-size: 1.1rem;'></i>",
+                btn_portfolio: "Acessar Portfólio <i class='fas fa-arrow-right' style='margin-left: 8px;'></i>",
+                footer: "Lucas Prado © 2026"
             },
             en: {
-                lang_label: "<i class='fas fa-globe'></i> Language:",
-                back_portfolio: "<i class='fas fa-arrow-left'></i> Lucas Prado | Portfolio",
+                lang_label: "Language:",
+                back_portfolio: "← Lucas Prado | Portfolio",
                 hero_title: "Web <span class='purple-text'>Fundamentals</span>",
-                hero_subtitle: "An interactive archive of my core studies in web architecture, semantics, and styled design.",
+                hero_subtitle: "Interactive archive of structural studies, semantics, and design.",
                 mod1_title: "Semantic HTML5",
                 mod1_desc: "Practical web structure applications, including Movie Ranking, Birthday Invite, and multi-page projects.",
                 mod2_title: "CSS & Core Design",
-                mod2_desc: "Advanced Box Model and styling mastery. Key projects highlight Motivation Memes and Flags in pure CSS.",
+                mod2_desc: "Box Model and styling mastery. Key projects highlight Motivation Memes and Flags in pure CSS.",
                 mod3_title: "Modern Layouts",
-                mod3_desc: "Senior techniques in Flexbox, CSS Grid, and responsive design to build complex visual interfaces.",
+                mod3_desc: "Senior techniques in Flexbox, CSS Grid, and responsive design to build complex interfaces.",
                 mod4_title: "Main Portfolio Hub",
-                mod4_desc: "Click here to access the main strategic hub featuring elite projects, Chrome extensions, and Marketing DNA.",
-                btn_code: "View Source Code <i class='fab fa-github'></i>",
-                btn_portfolio: "Access Full Portfolio <i class='fas fa-user-tie'></i>",
-                footer: "Documented by Lucas Prado © 2026"
+                mod4_desc: "Access the main strategic hub featuring elite projects, Chrome extensions, and Marketing DNA.",
+                btn_code: "View Source Code <i class='fab fa-github' style='margin-left: 8px; font-size: 1.1rem;'></i>",
+                btn_portfolio: "Access Portfolio <i class='fas fa-arrow-right' style='margin-left: 8px;'></i>",
+                footer: "Lucas Prado © 2026"
             },
             es: {
-                lang_label: "<i class='fas fa-globe'></i> Idioma:",
-                back_portfolio: "<i class='fas fa-arrow-left'></i> Lucas Prado | Portfolio",
+                lang_label: "Idioma:",
+                back_portfolio: "← Lucas Prado | Portfolio",
                 hero_title: "Fundamentos de la <span class='purple-text'>Web</span>",
-                hero_subtitle: "Un archivo interactivo de mis estudios básicos en arquitectura web, semántica y diseño estilizado.",
+                hero_subtitle: "Archivo interactivo de estudios estructurales, semántica y diseño.",
                 mod1_title: "HTML5 Semántico",
                 mod1_desc: "Aplicaciones prácticas de estructura web, incluyendo Ranking de Películas, Invitación de Cumpleaños y proyectos multipágina.",
                 mod2_title: "CSS y Diseño Base",
-                mod2_desc: "Dominio avanzado de Box Model y estilo visual. Los proyectos clave destacan Memes de Motivación y Banderas en CSS puro.",
+                mod2_desc: "Dominio de Box Model y estilo visual. Los proyectos destacan Memes de Motivación y Banderas en CSS puro.",
                 mod3_title: "Diseños Modernos",
-                mod3_desc: "Técnicas sintonizadas en Flexbox, CSS Grid y diseño responsivo para construir interfaces visuales complejas.",
+                mod3_desc: "Técnicas sintonizadas en Flexbox, CSS Grid y diseño responsivo para construir interfaces complejas.",
                 mod4_title: "Mi Portafolio Hub",
-                mod4_desc: "Haga clic aquí para acceder al hub principal estratégico con mis proyectos de élite, extensiones de Chrome y ADN de Marketing.",
-                btn_code: "Ver Código Fuente <i class='fab fa-github'></i>",
-                btn_portfolio: "Acceder al Portafolio Completo <i class='fas fa-user-tie'></i>",
-                footer: "Documentado por Lucas Prado © 2026"
+                mod4_desc: "Acceda al hub principal estratégico con mis proyectos de élite, extensiones de Chrome y ADN de Marketing.",
+                btn_code: "Ver Código Fuente <i class='fab fa-github' style='margin-left: 8px; font-size: 1.1rem;'></i>",
+                btn_portfolio: "Acceder al Portafolio <i class='fas fa-arrow-right' style='margin-left: 8px;'></i>",
+                footer: "Lucas Prado © 2026"
             },
             pl: {
-                lang_label: "<i class='fas fa-globe'></i> Język:",
-                back_portfolio: "<i class='fas fa-arrow-left'></i> Lucas Prado | Portfolio",
+                lang_label: "Język:",
+                back_portfolio: "← Lucas Prado | Portfolio",
                 hero_title: "Podstawy <span class='purple-text'>Web</span>",
-                hero_subtitle: "Interaktywne archiwum moich podstawowych studiów nad architekturą internetową, semantyką i designem.",
+                hero_subtitle: "Interaktywne archiwum studiów strukturalnych, semantyki i designu.",
                 mod1_title: "Semantyczny HTML5",
-                mod1_desc: "Praktyczne zastosowania struktury webowej, w tym ranking filmów, zaproszenia urodzinowe i projekty wielostronicowe.",
+                mod1_desc: "Praktyczne zastosowania struktury, w tym ranking filmów, zaproszenia i projekty wielostronicowe.",
                 mod2_title: "CSS i Core Design",
-                mod2_desc: "Opanowanie Box Model i stylizacji wizualnej. Kluczowe projekty wyróżniają memy motywacyjne i flagi w czystym CSS.",
+                mod2_desc: "Opanowanie Box Model i stylizacji. Kluczowe projekty wyróżniają memy motywacyjne i flagi w czystym CSS.",
                 mod3_title: "Nowoczesne Układy",
-                mod3_desc: "Techniki pozycjonowania, design responsywny, Flexbox i CSS Grid do budowania złożonych interfejsów.",
+                mod3_desc: "Techniki pozycjonowania, Flexbox i CSS Grid do budowania złożonych interfejsów responsywnych.",
                 mod4_title: "Główne Portfolio",
-                mod4_desc: "Kliknij tutaj, aby uzyskać dostęp do głównego huba z moimi projektami elitarnymi, rozszerzeniami Chrome i DNA Marketingu.",
-                btn_code: "Zobacz Kod Źródłowy <i class='fab fa-github'></i>",
-                btn_portfolio: "Przejdź do Pełnego Portfolio <i class='fas fa-user-tie'></i>",
-                footer: "Udokumentowane przez Lucas Prado © 2026"
+                mod4_desc: "Uzyskaj dostęp do głównego huba z moimi projektami elitarnymi, rozszerzeniami Chrome i DNA Marketingu.",
+                btn_code: "Zobacz Kod Źródłowy <i class='fab fa-github' style='margin-left: 8px; font-size: 1.1rem;'></i>",
+                btn_portfolio: "Przejdź do Portfolio <i class='fas fa-arrow-right' style='margin-left: 8px;'></i>",
+                footer: "Lucas Prado © 2026"
             }
         };
 
