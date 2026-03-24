@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* ================= RESET DE CAIXA (A CORREÇÃO DO BUG) ================= */
+        * { box-sizing: border-box; }
+
         /* ================= VARIÁVEIS (Cyberpunk Purple) ================= */
         :root {
             --bg-main: #0f0e17;       
@@ -54,11 +57,11 @@
         .hero-section { text-align: center; margin-bottom: 4rem; opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s ease-out forwards; }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
         
-        h1.dashboard-title { font-size: 2.8rem; margin-bottom: 1rem; color: var(--text-light); }
+        h1.dashboard-title { font-size: 2.8rem; margin-bottom: 1rem; color: var(--text-light); margin-top: 0; }
         .purple-text { color: var(--purple-primary); }
         p.dashboard-subtitle { color: var(--text-gray); font-size: 1.1rem; max-width: 650px; margin: 0 auto; line-height: 1.6; }
 
-        /* ================= TIMELINE / MODULES GRID (ESTÉTICA 4) ================= */
+        /* ================= TIMELINE / MODULES GRID ================= */
         .modules-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; width: 100%; max-width: 1000px;
             opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s ease-out 0.2s forwards;
@@ -72,8 +75,8 @@
         .module-card:hover { transform: translateY(-10px); border-color: var(--purple-primary); box-shadow: 0 10px 30px -10px var(--purple-glow); }
         
         .module-icon { font-size: 2.5rem; color: var(--purple-primary); margin-bottom: 1.5rem; }
-        .module-title { font-size: 1.4rem; color: var(--text-light); margin-bottom: 1rem; }
-        .module-desc { color: var(--text-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1;}
+        .module-title { font-size: 1.4rem; color: var(--text-light); margin-bottom: 1rem; margin-top: 0; }
+        .module-desc { color: var(--text-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1; }
         
         .tech-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 1.5rem; }
         .tag { background-color: rgba(127, 90, 240, 0.1); color: var(--purple-primary); padding: 4px 12px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(127, 90, 240, 0.3); }
@@ -88,11 +91,11 @@
         }
         
         .btn-portfolio {
-            background-color: var(--purple-primary); color: var(--text-light); padding: 1rem 2rem; border-radius: 8px;
-            font-weight: 600; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px var(--purple-glow); width: 100%; justify-content: center;
+            background-color: var(--purple-primary); color: var(--text-light); padding: 1rem; border-radius: 8px;
+            font-weight: 600; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px var(--purple-glow); width: 100%; justify-content: center; margin-top: auto;
         }
 
-        .module-card:hover .btn-portfolio { text-shadow: none !important; }
+        .module-card:hover .btn-portfolio { text-shadow: none !important; background-color: #6b44d6; }
 
         footer { padding: 2rem 0; text-align: center; border-top: 1px solid rgba(127, 90, 240, 0.1); color: var(--text-gray); font-size: 0.9rem; background-color: var(--bg-main); }
 
@@ -173,11 +176,10 @@
                 <i class="fas fa-briefcase module-icon"></i>
                 <h3 class="module-title" data-i18n="mod4_title">Meu Portfólio Hub</h3>
                 <p class="module-desc" data-i18n="mod4_desc">Clique aqui para acessar o hub principal com meus projetos de elite, extensões para Chrome e DNA de Marketing.</p>
-                <div class="card-footer special-footer">
-                    <a href="https://lspradoo.github.io/" class="btn-portfolio" data-i18n="btn_portfolio">
-                        Acessar Portfólio Completo <i class="fas fa-user-tie"></i>
-                    </a>
-                </div>
+                
+                <a href="https://lspradoo.github.io/" class="btn-portfolio" data-i18n="btn_portfolio">
+                    Acessar Portfólio Completo <i class="fas fa-user-tie"></i>
+                </a>
             </article>
         </div>
 
