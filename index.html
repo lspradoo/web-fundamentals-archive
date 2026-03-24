@@ -63,13 +63,12 @@
 
         .module-card {
             background-color: var(--bg-secondary); padding: 2.5rem; border-radius: 16px; border: 1px solid rgba(127, 90, 240, 0.1);
-            position: relative; overflow: hidden; transition: var(--transition); min-height: 360px; display: flex; flex-direction: column; justify-content: space-between;
+            position: relative; overflow: hidden; transition: var(--transition); min-height: 320px; display: flex; flex-direction: column; justify-content: space-between;
         }
 
         .module-card:hover { transform: translateY(-5px); border-color: var(--purple-primary); box-shadow: 0 10px 30px -10px var(--purple-glow); }
         
-        .module-icon { font-size: 2rem; color: var(--purple-primary); margin-bottom: 1.5rem; opacity: 0.8; }
-        .module-title { font-size: 1.4rem; color: var(--text-light); margin-bottom: 1rem; margin-top: 0; }
+        .module-title { font-size: 1.6rem; color: var(--text-light); margin-bottom: 1rem; margin-top: 0; }
         .module-desc { color: var(--text-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1; }
         
         .tech-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 2rem; }
@@ -131,7 +130,6 @@
 
         <div class="modules-grid">
             <article class="module-card">
-                <i class="fab fa-html5 module-icon"></i>
                 <h3 class="module-title" data-i18n="mod1_title">HTML5 Semântico</h3>
                 <p class="module-desc" data-i18n="mod1_desc">Aplicações práticas de estrutura web, incluindo Ranking de Filmes, Convites de Aniversário e arquitetura multi-páginas.</p>
                 <div class="tech-tags">
@@ -143,7 +141,6 @@
             </article>
 
             <article class="module-card">
-                <i class="fab fa-css3-alt module-icon"></i>
                 <h3 class="module-title" data-i18n="mod2_title">CSS & Design Base</h3>
                 <p class="module-desc" data-i18n="mod2_desc">Domínio sobre o Box Model e estilização visual. Projetos destacam Memes Motivacionais e Bandeiras em puro CSS.</p>
                 <div class="tech-tags">
@@ -155,7 +152,6 @@
             </article>
 
             <article class="module-card">
-                <i class="fas fa-layer-group module-icon"></i>
                 <h3 class="module-title" data-i18n="mod3_title">Layouts Modernos</h3>
                 <p class="module-desc" data-i18n="mod3_desc">Técnicas sênior de posicionamento e design responsivo com Flexbox e Grid para criar interfaces complexas.</p>
                 <div class="tech-tags">
@@ -167,7 +163,6 @@
             </article>
 
             <article class="module-card portfolio-banner">
-                <i class="fas fa-briefcase module-icon"></i>
                 <h3 class="module-title" data-i18n="mod4_title">Meu Portfólio Hub</h3>
                 <p class="module-desc" data-i18n="mod4_desc">Acesse o hub principal com meus projetos de elite, extensões para Chrome e DNA de Marketing.</p>
                 <a href="https://lspradoo.github.io/" class="btn-portfolio" data-i18n="btn_portfolio">
