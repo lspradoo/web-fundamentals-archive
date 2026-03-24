@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Fundamentals | Lucas Prado</title>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/210725531?v=4&s=128&r=50" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ================= VARIÁVEIS (Cyberpunk Purple) ================= */
+        :root {
+            --bg-main: #0f0e17;       
+            --bg-secondary: #1a1a2e;  
+            --purple-primary: #7f5af0; 
+            --purple-glow: rgba(127, 90, 240, 0.5); 
+            --text-light: #fffffe;    
+            --text-gray: #a7a9be;     
+            --font-main: 'Poppins', sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-light);
+            font-family: var(--font-main);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a { text-decoration: none; transition: var(--transition); }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+
+        /* ================= HEADER & IDIOMAS ================= */
+        header.dashboard-header {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(127, 90, 240, 0.1);
+            background-color: var(--bg-secondary);
+        }
+
+        .header-content {
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+        }
+
+        .back-to-portfolio {
+            color: var(--purple-primary); font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;
+        }
+
+        .back-to-portfolio:hover { color: var(--text-light); text-shadow: 0 0 10px var(--purple-primary); }
+
+        .lang-switcher { display: flex; align-items: center; gap: 10px; }
+        .lang-switcher label { color: var(--text-gray); font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 5px; }
+        .lang-switcher label i { color: var(--purple-primary); }
+        
+        .custom-select-wrapper select {
+            background-color: var(--bg-main); color: var(--text-light); border: 1px solid var(--purple-primary);
+            padding: 6px 35px 6px 12px; border-radius: 6px; font-family: var(--font-main); font-size: 0.9rem; font-weight: 600;
+            cursor: pointer; outline: none; appearance: none; -webkit-appearance: none;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%237f5af0%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat; background-position: right 10px top 50%; background-size: 10px auto;
+        }
+
+        /* ================= HERO ================= */
+        main.dashboard-main { flex-grow: 1; padding: 4rem 0; display: flex; flex-direction: column; align-items: center; }
+        .hero-section { text-align: center; margin-bottom: 4rem; opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s ease-out forwards; }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        
+        h1.dashboard-title { font-size: 2.8rem; margin-bottom: 1rem; color: var(--text-light); }
+        .purple-text { color: var(--purple-primary); }
+        p.dashboard-subtitle { color: var(--text-gray); font-size: 1.1rem; max-width: 650px; margin: 0 auto; line-height: 1.6; }
+
+        /* ================= TIMELINE / MODULES GRID ================= */
+        .modules-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; width: 100%; max-width: 1000px;
+            opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s ease-out 0.2s forwards;
+        }
+
+        .module-card {
+            background-color: var(--bg-secondary); padding: 2.5rem; border-radius: 16px; border: 1px solid rgba(127, 90, 240, 0.1);
+            position: relative; overflow: hidden; transition: var(--transition);
+        }
+
+        .module-card:hover { transform: translateY(-10px); border-color: var(--purple-primary); box-shadow: 0 10px 30px -10px var(--purple-glow); }
+        
+        .module-icon { font-size: 2.5rem; color: var(--purple-primary); margin-bottom: 1.5rem; }
+        .module-title { font-size: 1.4rem; color: var(--text-light); margin-bottom: 1rem; }
+        .module-desc { color: var(--text-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; }
+        
+        .tech-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        .tag { background-color: rgba(127, 90, 240, 0.1); color: var(--purple-primary); padding: 4px 12px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(127, 90, 240, 0.3); }
+
+        .btn-repo { color: var(--purple-primary); font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; }
+        .module-card:hover .btn-repo { color: var(--text-light); text-shadow: 0 0 10px var(--purple-primary); }
+
+        footer { padding: 2rem 0; text-align: center; border-top: 1px solid rgba(127, 90, 240, 0.1); color: var(--text-gray); font-size: 0.9rem; background-color: var(--bg-main); }
+
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; gap: 1.5rem; justify-content: center; }
+            h1.dashboard-title { font-size: 2.2rem; }
+            .modules-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="dashboard-header">
+        <div class="container header-content">
+            <a href="https://lspradoo.github.io/" class="back-to-portfolio" data-i18n="back_portfolio">
+                <i class="fas fa-arrow-left"></i> Lucas Prado | Portfolio
+            </a>
+            
+            <div class="lang-switcher">
+                <label for="lang-select" data-i18n="lang_label"><i class="fas fa-globe"></i> Idioma:</label>
+                <div class="custom-select-wrapper">
+                    <select id="lang-select" onchange="changeLanguage(this.value)">
+                        <option value="pt">Português (PT)</option>
+                        <option value="en">English (EN)</option>
+                        <option value="es">Español (ES)</option>
+                        <option value="pl">Polski (PL)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-main container">
+        
+        <div class="hero-section">
+            <h1 class="dashboard-title" data-i18n="hero_title">Fundamentos da <span class="purple-text">Web</span></h1>
+            <p class="dashboard-subtitle" data-i18n="hero_subtitle">Um arquivo interativo dos meus estudos fundamentais em arquitetura web, semântica e design estilizado.</p>
+        </div>
+
+        <div class="modules-grid">
+            <article class="module-card">
+                <i class="fab fa-html5 module-icon"></i>
+                <h3 class="module-title" data-i18n="mod1_title">Estrutura & Semântica</h3>
+                <p class="module-desc" data-i18n="mod1_desc">Estudos profundos sobre a construção de layouts acessíveis, hierarquia de informações e projetos multi-páginas.</p>
+                <div class="tech-tags">
+                    <span class="tag">HTML5</span>
+                    <span class="tag">SEO Básico</span>
+                    <span class="tag">Forms</span>
+                </div>
+                <a href="https://github.com/lspradoo/web-fundamentals-archive/tree/main/04%20Multi-Page%20Websites" target="_blank" class="btn-repo" data-i18n="btn_code">Ver Código Fonte <i class="fab fa-github"></i></a>
+            </article>
+
+            <article class="module-card">
+                <i class="fab fa-css3-alt module-icon"></i>
+                <h3 class="module-title" data-i18n="mod2_title">Estilização & Box Model</h3>
+                <p class="module-desc" data-i18n="mod2_desc">Domínio sobre seletores CSS, manipulação de cores, tipografia avançada e a física do Box Model na web.</p>
+                <div class="tech-tags">
+                    <span class="tag">CSS3</span>
+                    <span class="tag">Box Model</span>
+                    <span class="tag">Design</span>
+                </div>
+                <a href="https://github.com/lspradoo/web-fundamentals-archive/tree/main/06%20CSS%20Properties" target="_blank" class="btn-repo" data-i18n="btn_code">Ver Código Fonte <i class="fab fa-github"></i></a>
+            </article>
+
+            <article class="module-card">
+                <i class="fas fa-layer-group module-icon"></i>
+                <h3 class="module-title" data-i18n="mod3_title">Layouts Avançados</h3>
+                <p class="module-desc" data-i18n="mod3_desc">Técnicas modernas de posicionamento, design responsivo e arquitetura visual complexa.</p>
+                <div class="tech-tags">
+                    <span class="tag">Flexbox</span>
+                    <span class="tag">Grid</span>
+                    <span class="tag">Responsivo</span>
+                </div>
+                <a href="https://github.com/lspradoo/web-fundamentals-archive/tree/main/08%20Advanced%20CSS" target="_blank" class="btn-repo" data-i18n="btn_code">Ver Código Fonte <i class="fab fa-github"></i></a>
+            </article>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p data-i18n="footer">Documentado por Lucas Prado © 2026</p>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            pt: {
+                lang_label: "<i class='fas fa-globe'></i> Idioma:",
+                back_portfolio: "<i class='fas fa-arrow-left'></i> Lucas Prado | Portfolio",
+                hero_title: "Fundamentos da <span class='purple-text'>Web</span>",
+                hero_subtitle: "Um arquivo interativo dos meus estudos fundamentais em arquitetura web, semântica e design estilizado.",
+                mod1_title: "Estrutura & Semântica",
+                mod1_desc: "Estudos profundos sobre a construção de layouts acessíveis, hierarquia de informações e projetos multi-páginas.",
+                mod2_title: "Estilização & Box Model",
+                mod2_desc: "Domínio sobre seletores CSS, manipulação de cores, tipografia avançada e a física do Box Model na web.",
+                mod3_title: "Layouts Avançados",
+                mod3_desc: "Técnicas modernas de posicionamento, design responsivo e arquitetura visual complexa.",
+                btn_code: "Ver Código Fonte <i class='fab fa-github'></i>",
+                footer: "Documentado por Lucas Prado © 2026"
+            },
+            en: {
+                lang_label: "<i class='fas fa-globe'></i> Language:",
+                back_portfolio: "<i class='fas fa-arrow-left'></i> Lucas Prado | Portfolio",
+                hero_title: "Web <span class='purple-text'>Fundamentals</span>",
+                hero_subtitle: "An interactive archive of my core studies in web architecture, semantics, and styled design.",
+                mod1_title: "Structure & Semantics",
+                mod1_desc: "Deep dives into building accessible layouts, information hierarchy, and multi-page projects.",
+                mod2_title: "Styling & Box Model",
+                mod2_desc: "Mastery of CSS selectors, color manipulation, advanced typography, and web Box Model physics.",
+                mod3_title: "Advanced Layouts",
+                mod3_desc: "Modern positioning techniques, responsive design, and complex visual architecture.",
+                btn_code: "View Source Code <i class='fab fa-github'></i>",
+                footer: "Documented by Lucas Prado © 2026"
+            },
+            es: {
+                lang_label: "<i class='fas fa-globe'></i> Idioma:",
+                back_portfolio: "<i class='fas fa-arrow-left'></i> Lucas Prado | Portfolio",
+                hero_title: "Fundamentos de la <span class='purple-text'>Web</span>",
+                hero_subtitle: "Un archivo interactivo de mis estudios básicos en arquitectura web, semántica y diseño estilizado.",
+                mod1_title: "Estructura y Semántica",
+                mod1_desc: "Estudios profundos sobre la construcción de diseños accesibles, jerarquía de información y proyectos multipágina.",
+                mod2_title: "Estilo y Box Model",
+                mod2_desc: "Dominio de selectores CSS, manipulación de colores, tipografía avanzada y la física del Box Model web.",
+                mod3_title: "Diseños Avanzados",
+                mod3_desc: "Técnicas modernas de posicionamiento, diseño responsivo y arquitectura visual compleja.",
+                btn_code: "Ver Código Fuente <i class='fab fa-github'></i>",
+                footer: "Documentado por Lucas Prado © 2026"
+            },
+            pl: {
+                lang_label: "<i class='fas fa-globe'></i> Język:",
+                back_portfolio: "<i class='fas fa-arrow-left'></i> Lucas Prado | Portfolio",
+                hero_title: "Podstawy <span class='purple-text'>Web</span>",
+                hero_subtitle: "Interaktywne archiwum moich podstawowych studiów nad architekturą internetową, semantyką i designem.",
+                mod1_title: "Struktura i Semantyka",
+                mod1_desc: "Dogłębne studia nad tworzeniem dostępnych układów, hierarchią informacji i projektami wielostronicowymi.",
+                mod2_title: "Stylizacja i Box Model",
+                mod2_desc: "Opanowanie selektorów CSS, manipulacji kolorami, zaawansowanej typografii i fizyki Box Model.",
+                mod3_title: "Zaawansowane Układy",
+                mod3_desc: "Nowoczesne techniki pozycjonowania, projektowanie responsywne i złożona architektura wizualna.",
+                btn_code: "Zobacz Kod Źródłowy <i class='fab fa-github'></i>",
+                footer: "Udokumentowane przez Lucas Prado © 2026"
+            }
+        };
+
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+            const langSelect = document.getElementById('lang-select');
+            if (langSelect) langSelect.value = lang;
+            document.documentElement.lang = lang;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const browserLang = navigator.language.slice(0, 2);
+            const initialLang = translations[browserLang] ? browserLang : 'en';
+            changeLanguage(initialLang);
+        });
+    </script>
+</body>
+</html>
